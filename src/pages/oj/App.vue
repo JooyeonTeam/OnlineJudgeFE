@@ -10,6 +10,8 @@
         <p>Powered by <a href="https://github.com/QingdaoU/OnlineJudge">OnlineJudge</a>
           <span v-if="version">&nbsp; Version: {{ version }}</span>
         </p>
+        <p><a href="https://github.com/JooyeonTeam/OnlineJudgeFE">주연없는주연팀</a>
+        </p>
       </div>
     </div>
     <BackTop></BackTop>
