@@ -5,29 +5,17 @@
       <Menu-item name="/">
         <Icon type="home"></Icon>
         {{$t('m.Home')}}
-      </Menu-item>
-      <Menu-item name="/problem">
-        <Icon type="ios-keypad"></Icon>
-        {{$t('m.NavProblems')}}
-      </Menu-item>
-      <Menu-item name="/contest">
-        <Icon type="trophy"></Icon>
-        {{$t('m.Contests')}}
-      </Menu-item>
-      <Menu-item name="/status">
-        <Icon type="ios-pulse-strong"></Icon>
-        {{$t('m.NavStatus')}}
-      </Menu-item>
-      <Submenu name="rank">
+      </Menu-item> 
+      <Submenu name="/">
         <template slot="title">
-          <Icon type="podium"></Icon>
-          {{$t('m.Rank')}}
+          <Icon type="ios-keypad"></Icon>
+          {{$t('m.NavProblems')}}
         </template>
-        <Menu-item name="/acm-rank">
-          {{$t('m.ACM_Rank')}}
+        <Menu-item name="/problem">
+          {{$t('m.search_Problem')}}
         </Menu-item>
-        <Menu-item name="/oi-rank">
-          {{$t('m.OI_Rank')}}
+        <Menu-item name="/입력">
+          {{$t('m.input_Problem')}}
         </Menu-item>
       </Submenu>
       <Submenu name="about">
@@ -64,7 +52,6 @@
           </Button>
           <Dropdown-menu slot="list">
             <Dropdown-item name="/user-home">{{$t('m.MyHome')}}</Dropdown-item>
-            <Dropdown-item name="/status?myself=1">{{$t('m.MySubmissions')}}</Dropdown-item>
             <Dropdown-item name="/setting/profile">{{$t('m.Settings')}}</Dropdown-item>
             <Dropdown-item v-if="isAdminRole" name="/admin">{{$t('m.Management')}}</Dropdown-item>
             <Dropdown-item divided name="/logout">{{$t('m.Logout')}}</Dropdown-item>
