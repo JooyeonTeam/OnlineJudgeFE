@@ -18,11 +18,12 @@ const ApplyResetPassword = () => import(/* webpackChunkName: "password" */ '@oj/
 const ResetPassword = () => import(/* webpackChunkName: "password" */ '@oj/views/user/ResetPassword.vue')
 
 const Problem = () => import(/* webpackChunkName: "Problem" */ '@oj/views/problem/Problem.vue')
+const InputProblem = () => import(/* webpackChunkName: "Problem" */ '@oj/views/problem/InputProblem.vue')
 
 export {
   Home, NotFound, Announcements,
   Logout, UserHome, About, FAQ,
-  ProblemList, Problem,
+  ProblemList, Problem, InputProblem,
   ACMRank, OIRank,
   SubmissionList, SubmissionDetails,
   ApplyResetPassword, ResetPassword

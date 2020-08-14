@@ -11,6 +11,7 @@ import {
   OIRank,
   Problem,
   ProblemList,
+  InputProblem,
   ResetPassword,
   SubmissionDetails,
   SubmissionList,
@@ -56,6 +57,12 @@ export default [
     path: '/problem/:problemID',
     meta: {title: 'Problem Details'},
     component: Problem
+  },
+  {
+    name: 'inputProblem',
+    path: '/inputProblem',
+    meta: {title: 'Input Problem'},
+    component: InputProblem
   },
   {
     name: 'submission-list',

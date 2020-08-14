@@ -14,7 +14,7 @@
         <Menu-item name="/problem">
           {{$t('m.search_Problem')}}
         </Menu-item>
-        <Menu-item name="/입력">
+        <Menu-item name="/inputProblem">
           {{$t('m.input_Problem')}}
         </Menu-item>
       </Submenu>
