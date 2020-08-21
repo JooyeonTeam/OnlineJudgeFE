@@ -33,6 +33,14 @@ export const m = {
   You_have_submitted_a_solution: 'You have submitted a solution.',
   Contest_has_ended: 'Contest has ended',
   You_have_submission_in_this_problem_sure_to_cover_it: 'You have submission in this problem, sure to cover it?',
+  // inputProblem.vue
+  InputProblem: '문제 내용을 입력해주세요.',
+  showAnswercode: '답안 코드 보기',
+  DescriptionForInputProblem: '원하는 문제와 테스트케이스를 입력하고 답안 코드를 확인해 보세요!',
+  // AnswerCode.vue
+  Tempcode: '블라블라 코드코드',
+  AqquracyTest: '정확성 테스트',
+  Feedback: '제안 및 건의사항',
   // About.vue
   Compiler: 'Compiler',
   Result_Explanation: 'Result Explanation',
@@ -156,7 +164,7 @@ export const m = {
   About: 'About',
   Judger: 'Judger',
   FAQ: 'FAQ',
-  Login: '로그인',
+  Login: '관리자 로그인',
   Register: '회원가입',
   MyHome: 'Home',
   MySubmissions: 'Submissions',

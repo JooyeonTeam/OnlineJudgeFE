@@ -1,11 +1,13 @@
 <template>
   <div id="header">
     <Menu theme="light" mode="horizontal" @on-select="handleRoute" :active-name="activeMenu" class="oj-menu">
-      <div class="logo"><span><img class="logoimg" src="../../../assets/KOlogo.svg"></span></div>
+      <div class="logo"><img class="logoimg" src="../../../assets/KOlogo.svg"></div>
+      
       <Menu-item name="/">
         <Icon type="home"></Icon>
         {{$t('m.Home')}}
       </Menu-item> 
+      
       <Submenu name="/">
         <template slot="title">
           <Icon type="ios-keypad"></Icon>
@@ -18,6 +20,7 @@
           {{$t('m.input_Problem')}}
         </Menu-item>
       </Submenu>
+      
       <Submenu name="about">
         <template slot="title">
           <Icon type="information-circled"></Icon>
@@ -30,21 +33,23 @@
           {{$t('m.FAQ')}}
         </Menu-item>
       </Submenu>
+      
       <template v-if="!isAuthenticated">
         <div class="btn-menu">
           <Button type="ghost"
                   ref="loginBtn"
                   shape="circle"
-                  @click="handleBtnClick('login')">{{$t('m.Login')}}
+                  @click="handleBtnClick('login')">{{$t('m.Management')}}
           </Button>
           <Button v-if="website.allow_register"
                   type="ghost"
                   shape="circle"
                   @click="handleBtnClick('register')"
-                  style="margin-left: 5px;">{{$t('m.Register')}}
+                  style="margin-left: 5px;display: none" >{{$t('m.Register')}}
           </Button>
         </div>
       </template>
+      
       <template v-else>
         <Dropdown class="drop-menu" @on-click="handleRoute" placement="bottom" trigger="click">
           <Button type="text" class="drop-menu-title">{{ user.username }}
@@ -59,8 +64,9 @@
         </Dropdown>
       </template>
     </Menu>
+    
     <Modal v-model="modalVisible" :width="400">
-      <div slot="header" class="modal-title">{{$t('m.Welcome_to')}} {{website.website_name_shortcut}}</div>
+      <div slot="header" class="modal-title">{{$t('m.Login')}}</div>
       <component :is="modalStatus.mode" v-if="modalVisible"></component>
       <div slot="footer" style="display: none"></div>
     </Modal>

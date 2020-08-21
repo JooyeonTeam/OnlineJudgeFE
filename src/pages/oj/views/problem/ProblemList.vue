@@ -2,10 +2,10 @@
   <Row type="flex" :gutter="18">
     <Col :span=19>
     <Panel shadow>
-      <div slot="title">{{$t('m.Problem_List')}}</div>
+      <div slot="title"><img id="title_img" src="../../../../assets/searchCTimg.svg"></div>
       <div slot="extra">
         <ul class="filter">
-          <li>
+          <li style="display: none">
             <Dropdown @on-click="filterByDifficulty">
               <span>{{query.difficulty === '' ? this.$i18n.t('m.Difficulty') : this.$i18n.t('m.' + query.difficulty)}}
                 <Icon type="arrow-down-b"></Icon>
@@ -297,5 +297,10 @@
 
   #pick-one {
     margin-top: 10px;
+  }
+  
+  #title_img {
+  	margin-left: 5%;
+  	height: 27px;
   }
 </style>

@@ -139,6 +139,11 @@ export default {
       }
     })
   },
+  showAnswerCode (data) {
+    return ajax('answercode', 'post', {
+      data
+    })
+  },
   getContestList (offset, limit, searchParams) {
     let params = {
       offset,

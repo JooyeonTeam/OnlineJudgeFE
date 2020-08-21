@@ -12,6 +12,7 @@ import {
   Problem,
   ProblemList,
   InputProblem,
+  AnswerCode,
   ResetPassword,
   SubmissionDetails,
   SubmissionList,
@@ -63,6 +64,12 @@ export default [
     path: '/inputProblem',
     meta: {title: 'Input Problem'},
     component: InputProblem
+  },
+  {
+    name: 'answerCode',
+    path: '/answerCode',
+    meta: {title: 'Answer Code'},
+    component: AnswerCode
   },
   {
     name: 'submission-list',

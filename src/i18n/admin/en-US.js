@@ -96,6 +96,8 @@ export const m = {
   Low: 'Low',
   Tag: 'Tag',
   New_Tag: 'New Tag',
+  // inputProblem.vue
+  InputProblem: '문제 내용을 입력해주세요.',
    // ProblemList.vue
   Contest_Problem_List: 'Contest Problem List',
   // Contest.vue
