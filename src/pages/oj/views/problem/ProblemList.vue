@@ -1,8 +1,8 @@
 <template>
   <Row type="flex" :gutter="18">
     <Col :span=19>
-    <Panel shadow>
-      <div slot="title"><img id="title_img" src="../../../../assets/searchCTimg.svg"></div>
+    <Panel shadow :padding="10">
+      <div slot="title">{{$t('m.ProblemListTitle')}}</div>
       <div slot="extra">
         <ul class="filter">
           <li style="display: none">

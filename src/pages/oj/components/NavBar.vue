@@ -1,7 +1,7 @@
 <template>
   <div id="header">
     <Menu theme="light" mode="horizontal" @on-select="handleRoute" :active-name="activeMenu" class="oj-menu">
-      <div class="logo"><img class="logoimg" src="../../../assets/KOlogo.svg"></div>
+      <div id="logo">{{$t('m.NavTitle')}}</div>
       
       <Menu-item name="/">
         <Icon type="home"></Icon>
@@ -135,13 +135,12 @@
       background: #fdfdfd;
     }
 
-    .logo {
+    #logo {
       float: left;
-    }
-    
-    .logoimg {
-    width: 220px;
-    height: 65px;
+      font-size: 25px;
+      font-weight: 500;
+      line-height: 50px;
+      padding: 5px 15px;
     }
 
     .drop-menu {

@@ -2,10 +2,8 @@
   	<panel :padding="15" class="container">
     <div>
     <Form ref="formInput" :model="formInput" :rules="ruleInput">
-    		<div id="titleDiv">
-    			<img id="title_img" src="../../../../assets/inputCTimg.svg">
-    			<p id="descripText">{{$t('m.DescriptionForInputProblem')}}</p>
-    		</div>
+    		<div id="titleDiv">{{$t('m.InputProblemTitle')}}</div>
+    		<p id="descripText">{{$t('m.DescriptionForInputProblem')}}</p>
     		
     		<FormItem prop="problemData" align="center">
     			<textarea id="problemForm" v-model="formInput.problemData" :placeholder="$t('m.InputProblem')" @on-enter="handleInput"/>
@@ -13,19 +11,14 @@
     		 
     		<img id="sub_img" src="../../../../assets/testcase.svg">
     		
-    		<div id="testcaseDiv"  align="center">
-    			<FormItem prop="inputData">
-    			<div id="inputDiv">
-    			<textarea id="inputForm" class="testcaseForm" v-model="formInput.inputData" :placeholder="$t('m.Input')" @on-enter="handleInput"></textarea>
-    			</div>
-    			</FormItem>
-    			
+    		<div id="testcaseDiv">
+    			<FormItem prop="inputData" style="display: inline;">
+    			<textarea class="testcaseForm" v-model="formInput.inputData" :placeholder="$t('m.Input')" @on-enter="handleInput"></textarea>
     			<img id="arrow_img" src="../../../../assets/arrow.svg"></img>
-    			
-    			<FormItem prop="outputData">
-    			<div id="outputDiv">
-    			<textarea id="outputForm" class="testcaseForm" v-model="formInput.outputData" :placeholder="$t('m.Output')" @on-enter="handleInput"></textarea>
-    			</div>
+    			</FormItem>
+
+    			<FormItem prop="outputData" style="display: inline;">
+    			<textarea class="testcaseForm" v-model="formInput.outputData" :placeholder="$t('m.Output')" @on-enter="handleInput"></textarea>
     			</FormItem>
     		</div>
     		
@@ -51,11 +44,13 @@
 </template>
 
 <script>
+/* eslint-disable */
   import { mapGetters, mapActions } from 'vuex'
   import api from '@oj/api'
   import { FormMixin } from '@oj/components/mixins'
 
   export default {
+    name: 'InputProblem',
     mixins: [FormMixin],
     data () {
       return {
@@ -125,10 +120,10 @@
   
   #titleDiv {
   	text-align: center;
-  }
-  
-  #title_img {
-  	height: 30px;
+  	font-size: 25px;
+  	font-weight: 500;
+  	padding-top: 10px;
+  	padding-bottom: 25px;
   }
   
   #sub_img {
@@ -139,6 +134,7 @@
   
   #descripText {
   	color: gray;
+  	text-align: center;
   }
   
   #problemForm {
@@ -149,34 +145,21 @@
    font-size: 15px;
   }
   
-  #testcaseDiv{
-  	display: inline;
+  #testcaseDiv {
+  text-align: center;
+  display: inline;
   }
   
   .testcaseForm {
-  	width: 25%;
+  	width: 20%;
   	height: 80px;
   	border: 2px solid gray;
   }
-  
-  #inputDiv {
-   display: inline-block;
-   display: inline;
-   width: 40%;
-   }
-   
-   #outputDiv {
-   display: inline-block;
-   display: inline;
-   width: 40%;
-   }
-  
+
   #arrow_img {
-  	vertical-align: top;
-  	margin-top: 15px;
-  	display: inline;
-  	height: 50px;
+  	height: 55px;
   	width: 15%;
+  	margin-bottom: 15px;
   }
   
   #btns {

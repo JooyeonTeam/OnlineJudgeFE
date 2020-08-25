@@ -34,10 +34,12 @@ export const m = {
   Contest_has_ended: 'Contest has ended',
   You_have_submission_in_this_problem_sure_to_cover_it: 'You have submission in this problem, sure to cover it?',
   // inputProblem.vue
+  InputProblemTitle: '문제 직접 입력',
   InputProblem: '문제 내용을 입력해주세요.',
   showAnswercode: '답안 코드 보기',
   DescriptionForInputProblem: '원하는 문제와 테스트케이스를 입력하고 답안 코드를 확인해 보세요!',
   // AnswerCode.vue
+  AnswerCodeTitle: '답안 코드',
   Tempcode: '블라블라 코드코드',
   AqquracyTest: '정확성 테스트',
   Feedback: '제안 및 건의사항',
@@ -118,7 +120,7 @@ export const m = {
   Cancel: 'Cancel',
   // ContestDetail.vue
   Problems: 'Problems',
-  Announcements: 'Announcements',
+  Announcements: '공지사항',
   Submissions: 'Submissions',
   Rankings: 'Rankings',
   Overview: 'Overview',
@@ -152,6 +154,7 @@ export const m = {
   // KatexEditor.vue
   Latex_Editor: 'Latex Editor',
   // NavBar.vue
+  NavTitle: '코딩테스트',
   Home: 'Home',
   NavProblems: 'Problem',
   search_Problem: '검색',
@@ -173,9 +176,9 @@ export const m = {
   Logout: 'Logout',
   Welcome_to: 'Welcome to',
   // announcements.vue
-  Refresh: 'Refresh',
+  Refresh: '새로고침',
   Back: 'Back',
-  No_Announcements: 'No Announcements',
+  No_Announcements: '공지 사항이 없습니다.',
   // Setting.vue
   Profile: 'Profile',
   Account: 'Account',
@@ -204,6 +207,7 @@ export const m = {
   Total_Score: 'Total Score',
   // ProblemList.vue
   Problem_List: 'Problem List',
+  ProblemListTitle: '문제 찾아보기',
   High: 'High',
   Mid: 'Mid',
   Low: 'Low',
