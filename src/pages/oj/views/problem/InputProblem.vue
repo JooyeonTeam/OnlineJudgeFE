@@ -8,21 +8,27 @@
     		<FormItem prop="problemData" align="center">
     			<textarea id="problemForm" v-model="formInput.problemData" :placeholder="$t('m.InputProblem')" @on-enter="handleInput"/>
     		</FormItem> 		 
-    		 
-    		<img id="sub_img" src="../../../../assets/testcase.svg">
     		
-    		<div id="testcaseDiv">
-    			<FormItem prop="inputData" style="display: inline;">
-    			<textarea class="testcaseForm" v-model="formInput.inputData" :placeholder="$t('m.Input')" @on-enter="handleInput"></textarea>
-    			<img id="arrow_img" src="../../../../assets/arrow.svg"></img>
+    			<div id = "testcaseimg" style = "padding-bottom: 15px; margin: 0 auto; text-align:left; display:flex;">
+    				<img id="sub_img" src="../../../../assets/testcase.svg">
+    			</div>
+    		
+    		<div id="testcaseDiv" style =" width: 80%; margin: 10px auto; display: flex;">
+    			
+    			<FormItem prop="inputData" style="display: inline-block; width:30%; flex:1; margin:0px 10%;">
+    			<textarea class="testcaseForm" v-model="formInput.inputData" :placeholder="$t('m.Input')" @on-enter="handleInput"style = "width: 100%; height: 80px; font-size: 15px;"></textarea>
+
     			</FormItem>
 
-    			<FormItem prop="outputData" style="display: inline;">
-    			<textarea class="testcaseForm" v-model="formInput.outputData" :placeholder="$t('m.Output')" @on-enter="handleInput"></textarea>
+				<img id="arrow_img" src="../../../../assets/arrow.svg" style ="height: 50px; flex:1; width=5%;" ></img>
+
+    			<FormItem prop="outputData" style="display: inline-block; width:30%; flex:1; margin:0px 10%;">
+    			<textarea class="testcaseForm" v-model="formInput.outputData" :placeholder="$t('m.Output')" @on-enter="handleInput" style = "width: 100%; height: 80px; font-size: 15px;"></textarea>
     			</FormItem>
+    	
     		</div>
     		
-    		<div id="btns" align="center"> 
+    		<div id="btns" style = "text-align: right;" > 
     			<img id="btn_img" src="../../../../assets/addTC.svg">
     			<img src="../../../../assets/removeTC.svg">
     		</div>
@@ -48,7 +54,6 @@
   import { mapGetters, mapActions } from 'vuex'
   import api from '@oj/api'
   import { FormMixin } from '@oj/components/mixins'
-
   export default {
     name: 'InputProblem',
     mixins: [FormMixin],
@@ -102,7 +107,6 @@
 <style scoped lang="less">
   .container {
     margin-bottom: 20px;
-
     .content {
       font-size: 16px;
       margin: 0 50px 20px 50px;
@@ -155,7 +159,6 @@
   	height: 80px;
   	border: 2px solid gray;
   }
-
   #arrow_img {
   	height: 55px;
   	width: 15%;
