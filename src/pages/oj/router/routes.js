@@ -5,6 +5,7 @@ import {
   Announcements,
   ApplyResetPassword,
   FAQ,
+  Feedback,
   Home,
   Logout,
   NotFound,
@@ -13,6 +14,7 @@ import {
   ProblemList,
   InputProblem,
   AnswerCode,
+  AccuracyTest,
   ResetPassword,
   SubmissionDetails,
   SubmissionList,
@@ -70,6 +72,12 @@ export default [
     path: '/answerCode',
     meta: {title: 'Answer Code'},
     component: AnswerCode
+  },
+  {
+    name: 'accuracyTest',
+    path: '/accuracyTest',
+    meta: {title: 'Accuracy Test'},
+    component: AccuracyTest
   },
   {
     name: 'submission-list',
@@ -186,6 +194,12 @@ export default [
     name: 'faq',
     meta: {title: 'FAQ'},
     component: FAQ
+  },
+  {
+    path: '/feedback',
+    name: 'feedback',
+    meta: {title: 'Feedback'},
+    component: Feedback
   },
   {
     path: '*',

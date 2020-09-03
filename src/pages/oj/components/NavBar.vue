@@ -32,6 +32,9 @@
         <Menu-item name="/FAQ">
           {{$t('m.FAQ')}}
         </Menu-item>
+        <Menu-item name="/feedback">
+          {{$t('m.Feedback')}}
+        </Menu-item>
       </Submenu>
       
       <template v-if="!isAuthenticated">

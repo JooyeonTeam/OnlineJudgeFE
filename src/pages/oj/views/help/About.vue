@@ -1,7 +1,7 @@
 <template>
   <div>
     <panel class="container">
-      <div slot="title">{{$t('m.Compiler')}} & {{$t('m.Judger')}}</div>
+      <div slot="title">{{$t('m.Judger')}}</div>
       <div class="content markdown-body">
         <ul>
           <li v-for="lang in languages">{{lang.name}} ( {{lang.description}} )

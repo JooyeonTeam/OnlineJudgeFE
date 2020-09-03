@@ -1,36 +1,20 @@
 <template>
   	<panel :padding="15" class="container">
     <div>
-    <Form ref="formInput" :model="formInput" :rules="ruleInput">
-    		<div id="titleDiv">{{$t('m.InputProblemTitle')}}</div>
-    		<p id="descripText">{{$t('m.DescriptionForInputProblem')}}</p>
-
-    		<FormItem prop="problemData" align="center">
-    			<textarea id="problemForm" v-model="formInput.problemData" :placeholder="$t('m.InputProblem')" @on-enter="handleInput"/>
-    		</FormItem>
-
-    			<div id = "testcaseimg" style = "padding-bottom: 15px; margin: 0 auto; text-align:left; display:flex;">
-    				<img id="sub_img" src="../../../../assets/testcase.svg">
-    			</div>
+    <Form ref="formTestcase" :model="formTestcase" :rules="ruleTestcase">
+    		<div id="titleDiv">{{$t('m.AccuracyTestTitle')}}</div>
+    		<p id="descripText">{{$t('m.DescriptionForAccuracyTest')}}</p>
 
     		<div id="testcaseDiv" style =" width: 80%; margin: 10px auto; display: flex;">
-
     			<FormItem prop="inputData" style="display: inline-block; width:30%; flex:1; margin:0px 10%;">
-    			<textarea class="testcaseForm" v-model="formInput.inputData" :placeholder="$t('m.Input')" @on-enter="handleInput"style = "width: 100%; height: 80px; font-size: 15px;"></textarea>
-
+    			<textarea class="testcaseForm" v-model="formTestcase.inputData" :placeholder="$t('m.Input')" @on-enter="handleRunTestcase"style = "width: 100%; height: 80px; font-size: 15px;"></textarea>
     			</FormItem>
 
 				<img id="arrow_img" src="../../../../assets/arrow.svg" style ="height: 50px; flex:1; width=5%;" ></img>
 
     			<FormItem prop="outputData" style="display: inline-block; width:30%; flex:1; margin:0px 10%;">
-    			<textarea class="testcaseForm" v-model="formInput.outputData" :placeholder="$t('m.Output')" @on-enter="handleInput" style = "width: 100%; height: 80px; font-size: 15px;"></textarea>
+    			<textarea class="testcaseForm" v-model="formTestcase.outputData" :placeholder="$t('m.Output')" @on-enter="handleRunTestcase" style = "width: 100%; height: 80px; font-size: 15px;"></textarea>
     			</FormItem>
-
-    		</div>
-
-    		<div id="btns" style = "text-align: right;" >
-    			<img id="btn_img" src="../../../../assets/addTC.svg">
-    			<img src="../../../../assets/removeTC.svg">
     		</div>
     	</tbody>
     	</table>
@@ -40,11 +24,12 @@
     <div class="footer">
       <Button
         type="primary"
-        @click="handleInput"
+        @click="handleRunTestcase"
         class="btn" long
-        :loading="btnInputLoading">
-        {{$t('m.showAnswercode')}}
+        :loading="btnTestcaseLoading">
+        {{$t('m.RunTestcaseBtn')}}
       </Button>
+
     </div>
     </panel>
 </template>
@@ -55,20 +40,16 @@
   import api from '@oj/api'
   import { FormMixin } from '@oj/components/mixins'
   export default {
-    name: 'InputProblem',
+    name: 'AccuracyTest',
     mixins: [FormMixin],
     data () {
       return {
-        btnInputLoading: false,
-        formInput: {
-          problemData: '',
+        btnTestcaseLoading: false,
+        formTestcase: {
           inputData: '',
           outputData: ''
         },
-        ruleInput: {
-          problemData: [
-            {required: false}
-          ],
+        ruleTestcase: {
           inputData: [
             {required: false}
           ],
@@ -86,8 +67,7 @@
           visible: true
         })
       },
-      handleInput () {
-        this.$router.push('/answerCode')
+      handleRunTestcase () {
       }
     },
     computed: {
@@ -130,23 +110,10 @@
   	padding-bottom: 25px;
   }
 
-  #sub_img {
-  	margin-top: 40px;
-  	width: 40%;
-  	height: 25px;
-  }
-
   #descripText {
   	color: gray;
   	text-align: center;
-  }
-
-  #problemForm {
-    margin-top: 20px;
-   border: 2px solid gray;
-   width: 65%;
-   height: 300px;
-   font-size: 15px;
+    margin-bottom: 100px;
   }
 
   #testcaseDiv {
@@ -165,17 +132,9 @@
   	margin-bottom: 15px;
   }
 
-  #btns {
-  	display: inline;
-  }
-
-  #btn_img {
-  	margin-top: 7px;
-  	margin-left: 65%;
-  }
-
   .btn {
-  	width: 150px;
+  	width: 120px;
   	font-size: 20px;
+    margin-top: 50px;
   }
 </style>

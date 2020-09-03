@@ -20,11 +20,13 @@ const ResetPassword = () => import(/* webpackChunkName: "password" */ '@oj/views
 const Problem = () => import(/* webpackChunkName: "Problem" */ '@oj/views/problem/Problem.vue')
 const InputProblem = () => import(/* webpackChunkName: "InputProblem" */ '@oj/views/problem/InputProblem.vue')
 const AnswerCode = () => import(/* webpackChunkName: "AnswerCode" */ '@oj/views/problem/AnswerCode.vue')
+const AccuracyTest = () => import(/* webpackChunkName: "AccuracyTest" */ '@oj/views/problem/AccuracyTest.vue')
+const Feedback = () => import(/* webpackChunkName: "Feedback" */ '@oj/views/help/Feedback.vue')
 
 export {
   Home, NotFound, Announcements,
-  Logout, UserHome, About, FAQ,
-  ProblemList, Problem, InputProblem, AnswerCode,
+  Logout, UserHome, About, FAQ, Feedback,
+  ProblemList, Problem, InputProblem, AnswerCode, AccuracyTest,
   ACMRank, OIRank,
   SubmissionList, SubmissionDetails,
   ApplyResetPassword, ResetPassword

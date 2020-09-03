@@ -3,7 +3,8 @@
     <div>
     <Form>
     <div id="titleDiv">{{$t('m.AnswerCodeTitle')}}</div>
-    		
+    <p id="descripText">{{$t('m.DescriptionForAccuracyTest')}}</p>
+
     		<div id="codeArea">
     		<CodeMirror :value.sync="code"
                     :theme="theme"
@@ -14,17 +15,13 @@
                     </div>
     </Form>
     </div>
-    
     <div class="footer">
       <Button
         type="primary"
-        class="btn">
-        {{$t('m.AqquracyTest')}}
-      </Button>
-      <Button
-        type="primary"
-        class="btn">
-        {{$t('m.Feedback')}}
+        @click="handleInput"
+        class="btn" long
+        :loading="btnInputLoading">
+        {{$t('m.AccuracyTest')}}
       </Button>
     </div>
     </panel>
@@ -44,12 +41,14 @@
   const filtedStatus = ['-1', '-2', '0', '1', '2', '3', '4', '8']
 
   export default {
+    name: 'AnswerCode',
     components: {
       CodeMirror
     },
     mixins: [FormMixin],
     data () {
       return {
+        btnInputLoading: false,
         statusVisible: false,
         captchaRequired: false,
         graphVisible: false,
@@ -96,8 +95,16 @@
     mounted () {
     },
     methods: {
-      ...mapActions(['changeDomTitle']),
-
+      ...mapActions(['changeDomTitle', 'changeModalStatus', 'getProfile']),
+      handleBtnClick (mode) {
+        this.changeModalStatus({
+          mode,
+          visible: true
+        })
+      },
+      handleInput () {
+        this.$router.push('/accuracyTest')
+      },
       handleRoute (route) {
         this.$router.push(route)
       },
@@ -147,17 +154,21 @@
       }
     }
   }
-  
+
   #titleDiv {
   	text-align: center;
   	font-size: 25px;
   	font-weight: 500;
   	padding-top: 10px;
-  	padding-bottom: 20px;
-  	line-height: 30px;
-  	padding: 5px 15px;
+  	padding-bottom: 25px;
   }
-  
+
+  #descripText {
+  	color: gray;
+  	text-align: center;
+  }
+
+
   #codeArea{
   	padding-top: 10px;
   	padding-bottom: 20px;
@@ -171,9 +182,9 @@
    height: 500px;
    font-size: 15px;
   }
-  
+
   .btn {
-  	width: 20%;
+  	width: 150px;
   	font-size: 20px;
   	margin-left: 5%;
   	margin-right: 5%;
