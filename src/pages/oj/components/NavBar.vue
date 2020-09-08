@@ -2,12 +2,12 @@
   <div id="header">
     <Menu theme="light" mode="horizontal" @on-select="handleRoute" :active-name="activeMenu" class="oj-menu">
       <div id="logo">{{$t('m.NavTitle')}}</div>
-      
+
       <Menu-item name="/">
         <Icon type="home"></Icon>
         {{$t('m.Home')}}
-      </Menu-item> 
-      
+      </Menu-item>
+
       <Submenu name="/">
         <template slot="title">
           <Icon type="ios-keypad"></Icon>
@@ -20,7 +20,7 @@
           {{$t('m.input_Problem')}}
         </Menu-item>
       </Submenu>
-      
+
       <Submenu name="about">
         <template slot="title">
           <Icon type="information-circled"></Icon>
@@ -33,10 +33,10 @@
           {{$t('m.FAQ')}}
         </Menu-item>
         <Menu-item name="/feedback">
-          {{$t('m.Feedback')}}
+          {{$t('m.FeedbackTitle')}}
         </Menu-item>
       </Submenu>
-      
+
       <template v-if="!isAuthenticated">
         <div class="btn-menu">
           <Button type="ghost"
@@ -52,7 +52,7 @@
           </Button>
         </div>
       </template>
-      
+
       <template v-else>
         <Dropdown class="drop-menu" @on-click="handleRoute" placement="bottom" trigger="click">
           <Button type="text" class="drop-menu-title">{{ user.username }}
@@ -67,7 +67,7 @@
         </Dropdown>
       </template>
     </Menu>
-    
+
     <Modal v-model="modalVisible" :width="400">
       <div slot="header" class="modal-title">{{$t('m.Login')}}</div>
       <component :is="modalStatus.mode" v-if="modalVisible"></component>

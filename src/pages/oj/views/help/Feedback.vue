@@ -1,42 +1,8 @@
 <template>
   	<panel :padding="15" class="container">
-    <div>
-    <Form ref="formFeedback" :model="formFeedback" :rules="ruleFeedback">
+
     		<div id="titleDiv">{{$t('m.FeedbackTitle')}}</div>
-
-        <div class="subTitleDiv">{{$t('m.divisionTitle')}}</div>
-        <div id="divisionDiv">
-          <FormItem prop="divisionData">
-            <input type="radio" v-model="formFeedback.divisionData" size="small" id="divisionQuestion" value="divisionQuestion" @on-enter="handleFeedback" />
-            <label for="divisionQuestion" class="divisionRadio">{{$t('m.divisionQuestion')}}</label>
-            <input type="radio" v-model="formFeedback.divisionData" size="small" id="divisionUncomfortable" value="divisionUncomfortable" @on-enter="handleFeedback" />
-            <label for="divisionUncomfortable" class="divisionRadio">{{$t('m.divisionUncomfortable')}}</label>
-            <input type="radio" v-model="formFeedback.divisionData" size="small" id="divisionError" value="divisionError" @on-enter="handleFeedback" />
-            <label for="divisionError" class="divisionRadio">{{$t('m.divisionError')}}</label>
-            <input type="radio" v-model="formFeedback.divisionData" size="small" id="divisionExtra" value="divisionExtra" @on-enter="handleFeedback" />
-            <label for="divisionExtra" class="divisionRadio">{{$t('m.divisionExtra')}}</label>
-          </FormItem>
-        </div>
-
-        <div>
-          <div class="subTitleDiv">{{$t('m.divisionContent')}}</div>
-          <FormItem prop="contentData">
-            <textarea id="contentForm" v-model="formFeedback.contentData" :placeholder="$t('m.DescriptionContent')" @on-enter="handleFeedback"/>
-          </FormItem>
-        </div>
-
-        <div>
-          <div class="subTitleDiv">{{$t('m.select')}}</div>
-          <p id="descripText">{{$t('m.DescriptionForSelect')}}</p>
-          <FormItem prop="emailData">
-            <input type="email" id="emailForm" v-model="formFeedback.emailData" :placeholder="$t('m.DescriptionEmail')" @on-enter="handleFeedback"/>
-          </FormItem>
-        </div>
-
-    	</tbody>
-    	</table>
-    </Form>
-    </div>
+        <div id="descripText">{{$t('m.DescriptionForFeedback')}}</div>
 
     <div class="footer">
       <Button
@@ -59,25 +25,6 @@
   export default {
     mixins: [FormMixin],
     data () {
-      return {
-        btnFeedbackLoading: false,
-        formFeedback: {
-          divisionData: '',
-          contentData: '',
-          emailData: ''
-        },
-        ruleFeedback: {
-          divisionData: [
-            {required: false}
-          ],
-          contentData: [
-            {required: false}
-          ],
-          emailData: [
-            {required: false}
-          ]
-        }
-      }
     },
     methods: {
       ...mapActions(['changeModalStatus', 'getProfile']),
@@ -88,6 +35,7 @@
         })
       },
       handleFeedback () {
+        window.open('https://forms.gle/nhJJ8kD3mWxVAQAj8', '_blank');
       }
     },
     computed: {
@@ -130,48 +78,15 @@
   	padding-bottom: 25px;
   }
 
-  .subTitleDiv {
-  	font-size: 20px;
-  	font-weight: 500;
-  	padding-top: 10px;
-  	padding-bottom: 25px;
-    margin-left: 30%;
-  }
-
-  #divisionDiv {
-    margin-left: 35%;
-    margin-bottom: 0px;
-  }
-
-  .divisionRadio {
-    font-size: 17px;
-    margin-right: 60px;
-  }
-
-  #contentForm {
-   border: 2px solid gray;
-   width: 50%;
-   height: 300px;
-   font-size: 17px;
-   margin-left: 35%;
-  }
-
   #descripText {
+    text-align: center;
   	color: gray;
-    margin-left: 35%;
-  }
-
-  #emailForm {
-    border: 2px solid gray;
-    width: 300px;
-    font-size: 13px;
-    margin-left: 35%;
-    margin-top: 15px;
-    margin-bottom: 30px;
   }
 
   .btn {
-  	width: 100px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  	width: 120px;
   	font-size: 20px;
   }
 </style>
