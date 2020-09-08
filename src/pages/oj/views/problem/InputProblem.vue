@@ -28,6 +28,7 @@
     			</FormItem>
         <br/>
     		</div>
+
         <textarea v-for = "item in items">
           {{item.message}}
         </textarea>
@@ -94,8 +95,8 @@
         <br/>\
         <Form>\
         <div style = \"margin: 0 auto; display: flex; width: 80%;\">\
-        <textarea style = \"display: inline-block; flex:1; margin:0px 10%; border: 2px solid gray;width: 100%; height: 80px;font-size: 15px;\" placeholder =\"Input\"></textarea>\
-        <img src = "../../../../../static/arrow.svg" style =\"height: 55px;	margin-bottom: 15px; display: inline-block; width:30%; flex:1; margin:0px 10%;\">\
+        <textarea style = \"display: inline-block; flex:1; margin:0px 10%; border: 2px solid gray; width: 100%; height: 80px;font-size: 15px;\" placeholder =\"Input\"></textarea>\
+        <img src = "../../../../../static/arrow.svg" style =\"height: 50px; flex:1; width=5%;\">\
         <textarea style = \"display: inline-block; flex:1; margin:0px 10%;  border: 2px solid gray;width: 100%; height: 80px;font-size: 15px;\" placeholder =\"Output\"></textarea>\
         </div>\
         </Form>\
@@ -112,7 +113,7 @@
   export default {
     name: 'InputProblem',
     mixins: [FormMixin],
-    el: '#todo-list-example',
+    // el: '#todo-list-example',
     data () {
       return {
         btnInputLoading: false,
@@ -243,13 +244,13 @@
   }
 
   .testcaseForm {
-  	width: 20%;
+  	// width: 20%;
   	height: 80px;
   	border: 2px solid gray;
   }
   #arrow_img {
   	height: 55px;
-  	width: 15%;
+  	// width: 15%;
   	margin-bottom: 15px;
   }
 
