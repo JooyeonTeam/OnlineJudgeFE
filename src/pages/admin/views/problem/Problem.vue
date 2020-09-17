@@ -257,7 +257,7 @@
         </el-row>
 
         <el-form-item :label="$t('m.Source')">
-          <el-input :placeholder="$t('m.Source')" v-model="problem.source"></el-input>
+          <el-input  :rows="20" type="textarea" :placeholder="$t('m.Source')" v-model="problem.source"></el-input>
         </el-form-item>
         <save @click.native="submit()">Save</save>
       </el-form>
@@ -646,4 +646,3 @@
     overflow-x: scroll;
   }
 </style>
-
