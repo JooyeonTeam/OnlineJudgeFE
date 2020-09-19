@@ -1,80 +1,49 @@
 <template>
-  	<panel :padding="15" class="container">
-    <div id = "inputtestcaseDiv">
-    <Form id = "formInput" ref="formInput" :model="formInput" :rules="ruleInput">
-    		<div id="titleDiv">{{$t('m.InputProblemTitle')}}</div>
-    		<p id="descripText">{{$t('m.DescriptionForInputProblem')}}</p>
+  <panel :padding="15" class="container">
+    <div class="center">
+      <div id="titleDiv">{{$t('m.InputProblemTitle')}}</div>
+      <p id="descripText">{{$t('m.DescriptionForInputProblem')}}</p>
+      <textarea id="problemForm" v-model="problemData" :placeholder="$t('m.DescriptionForProblem')" @on-enter="handleInput"></textarea>
 
-    		<FormItem prop="problemData" align="center">
-    			<textarea id="problemForm" v-model="formInput.problemData" :placeholder="$t('m.DescriptionForProblem')" @on-enter="handleInput"></textarea>
-    		</FormItem>
+      <div class="subTitleDiv">{{$t('m.InputFormTitle')}}</div>
+      <textarea class="ioForm" v-model="inputFormData" :placeholder="$t('m.DescriptionForInputForm')" @on-enter="handleInput"></textarea>
 
-        <div class="subTitleDiv">{{$t('m.InputFormTitle')}}</div>
-        <FormItem prop="inputFormData" align="center">
-          <textarea id="inputForm" v-model="formInput.inputFormData" :placeholder="$t('m.DescriptionForInputForm')" @on-enter="handleInput"></textarea>
-        </FormItem>
+      <div class="subTitleDiv">{{$t('m.OutputFormTitle')}}</div>
+      <textarea class="ioForm" v-model="outputFormData" :placeholder="$t('m.DescriptionForOutputForm')" @on-enter="handleInput"></textarea>
 
-        <div class="subTitleDiv">{{$t('m.OutputFormTitle')}}</div>
-        <FormItem prop="outputFormData" align="center">
-          <textarea id="outputForm" v-model="formInput.outputFormData" :placeholder="$t('m.DescriptionForOutputForm')" @on-enter="handleInput"></textarea>
-        </FormItem>
-
-        <div class="subTitleDiv">{{$t('m.TestcaseTitle')}}</div>
-
-    		<div id="testcaseDiv" style =" width: 80%; margin: 10px auto; display: flex;">
-
-    			<FormItem prop="inputData" style="display: inline-block; width:30%; flex:1; margin:0px 10%;">
-    			<textarea class="testcaseForm" v-model="formInput.inputData" :placeholder="$t('m.Input')" @on-enter="handleInput"style = "width: 100%; height: 80px; font-size: 15px;"></textarea>
-
-    			</FormItem>
-
-				<img id="arrow_img" src="../../../../../static/arrow.svg" style ="height: 50px; flex:1; width=5%;" ></img>
-
-    			<FormItem prop="outputData" style="display: inline-block; width:30%; flex:1; margin:0px 10%;">
-    			<textarea class="testcaseForm" v-model="formInput.outputData" :placeholder="$t('m.Output')" @on-enter="handleInput" style = "width: 100%; height: 80px; font-size: 15px;"></textarea>
-    			</FormItem>
+      <div class="subTitleDiv">{{$t('m.TestcaseTitle')}}</div>
+    </div>
+      <div id="testcaseDiv">
+        <textarea class="testcaseForm" v-model="inputData" :placeholder="$t('m.Input')" @on-enter="handleInput"></textarea>
+        <img id="arrow_img" src="../../../../../static/arrow.svg"></img>
+        <textarea class="testcaseForm" v-model="outputData" :placeholder="$t('m.Output')" @on-enter="handleInput"></textarea>
         <br/>
-    		</div>
+      </div>
 
-        <textarea v-for = "item in items">
-          {{item.message}}
-        </textarea>
-        <div id = "app">
-          <!-- <my-component  v-for="(item, index) in items" v-bind:item="item"  v-bind:index="index" v-bind:key="item.id"></my-component> -->
-          <!-- <Form> -->
-          <!-- </Form> -->
-        </div>
-        <br/>
-        <form v-on:submit.prevent="addNewTodo">
-
-          <!-- <input
-            v-model="newTodoText"
-            id="new-todo"
-            placeholder="E.g. Feed the cat"
-          > -->
-          <div style = "width: 65%; margin: 0 auto; text-align: center;">
+      <textarea v-for = "item in items">
+        {{item.message}}
+      </textarea>
+      <br/>
+      <form v-on:submit.prevent="addNewTodo">
+        <div style = "width: 65%; margin: 0 auto; text-align: center;">
           <button id = "addTCbtn" >테스트 케이스 추가</button>
         </div>
-        </form>
-        <br/><br/><br/>
-        <my-component v-for="(item, index) in items"  v-bind:item="item"  v-bind:index="index"  v-bind:key="item.id" ></my-component>
-
-        <div id="todo-list-example">
-            <div style = "margin: 0 auto; text-align: center;"
-              is="todo-item"
-              v-for="(todo, index) in todos"
-              v-bind:key="todo.id"
-              v-bind:title="todo.title"
-              v-on:remove="todos.splice(index, 1)"
-            ></div>
-        </div>
+      </form>
+      <br/><br/><br/>
+      <my-component v-for="(item, index) in items"  v-bind:item="item"  v-bind:index="index"  v-bind:key="item.id" ></my-component>
+      <div id="todo-list-example">
+        <div style = "margin: 0 auto; text-align: center;"
+        is="todo-item"
+        v-for="(todo, index) in todos"
+        v-bind:key="todo.id"
+        v-bind:title="todo.title"
+        v-on:remove="todos.splice(index, 1)"
+        ></div>
+      </div>
       <br/><br/>
-    	</tbody>
-    	</table>
-    </Form>
-    </div>
-    <div class="footer">
-      <Button
+
+      <div class="footer">
+        <Button
         type="primary"
         @click="handleInput"
         class="btn" long30
@@ -82,8 +51,9 @@
         {{$t('m.showAnswercode')}}
       </Button>
     </div>
-    </panel>
+  </panel>
 </template>
+
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -100,13 +70,11 @@
       <div style = \"margin: 0 auto; text-align: center; \">\
         {{ title }}\
         <br/>\
-        <Form>\
         <div style = \"margin: 0 auto; display: flex; width: 80%;\">\
         <textarea style = \"display: inline-block; flex:1; margin:0px 10%; border: 2px solid gray; width: 100%; height: 80px;font-size: 15px;\" placeholder =\"Input\"></textarea>\
         <img src = "../../../../../static/arrow.svg" style =\"height: 50px; flex:1; width=5%;\">\
         <textarea style = \"display: inline-block; flex:1; margin:0px 10%;  border: 2px solid gray;width: 100%; height: 80px;font-size: 15px;\" placeholder =\"Output\"></textarea>\
         </div>\
-        </Form>\
         <br/>\
         <div style = "width: 82%;">\
         <button v-on:click="$emit(\'remove\')" style = \"float: right\">삭제</button>\
@@ -120,26 +88,14 @@
   export default {
     name: 'InputProblem',
     mixins: [FormMixin],
-    // el: '#todo-list-example',
     data () {
       return {
         btnInputLoading: false,
-        formInput: {
-          problemData: '',
-          inputData: '',
-          outputData: ''
-        },
-        ruleInput: {
-          problemData: [
-            {required: false}
-          ],
-          inputData: [
-            {required: false}
-          ],
-          outputData: [
-            {required: false}
-          ]
-        },
+        problemData: '',
+        inputFormData: '',
+        outputFormData: '',
+        inputData: '',
+        outputData: '',
         newTodoText: '',
         todos: [
         ],
@@ -155,11 +111,15 @@
         })
       },
       handleInput () {
-        this.$router.push('/answerCode')
+        this.$router.push({name:'answerCode',
+        params:{'problemData': this.problemData,
+        'inputFormData': this.inputFormData,
+        'outputFormData': this.outputFormData,
+        'inputData': this.inputData,
+        'outputData': this.outputData}})
       },
       addTC() {
         this.$refs.addtc_img.style.display = "none";
-
       },
       addNewTodo: function () {
         this.todos.push({
@@ -181,23 +141,7 @@
       }
     }
   }
-
-
-  // Vue.component('my-component',{
-  //     template:  '<button></button>'
-  //   });
-  //
-  // new Vue({
-  //     el: "#app",
-  //     div: "#inputtestcaseDiv",
-  //     data:{
-  //       message: 'click this button'
-  //     }
-  //   });
-  //
-
 </script>
-
 
 <style scoped lang="less">
   .container {
@@ -217,8 +161,11 @@
     }
   }
 
+  .center {
+    text-align: center;
+  }
+
   #titleDiv {
-  	text-align: center;
   	font-size: 25px;
   	font-weight: 500;
   	padding-top: 10px;
@@ -230,18 +177,11 @@
     font-weight: 500;
     padding-top: 50px;
     margin-left: 15%;
-  }
-
-  #sub_img {
-  	margin-top: 40px;
-  	width: 40%;
-  	height: 25px;
-    display: inline-block;
+    text-align: left;
   }
 
   #descripText {
   	color: gray;
-  	text-align: center;
   }
 
   #problemForm {
@@ -252,15 +192,7 @@
    font-size: 15px;
   }
 
-  #inputForm {
-    margin-top: 20px;
-    border: 2px solid gray;
-    width: 65%;
-    height: 70px;
-    font-size: 15px;
-  }
-
-  #outputForm {
+  .ioForm {
     margin-top: 20px;
     border: 2px solid gray;
     width: 65%;
@@ -269,24 +201,28 @@
   }
 
   #testcaseDiv {
-  text-align: center;
-  display: inline;
+    text-align: center;
+    display: inline;
+    width: 80%;
+    margin: 10px auto;
+    display: flex;
   }
 
   .testcaseForm {
-  	// width: 20%;
   	height: 80px;
   	border: 2px solid gray;
-  }
-  #arrow_img {
-  	height: 55px;
-  	// width: 15%;
-  	margin-bottom: 15px;
+    display: inline-block;
+    width:30%;
+    flex:1;
+    margin:0px 10%;
+    font-size: 15px;
   }
 
-  #btns {
-  	display: inline;
-    width: 65%;
+  #arrow_img {
+  	height: 55px;
+  	margin-bottom: 15px;
+    flex:1;
+    width: 5%;
   }
 
   #addtc_img {
@@ -300,13 +236,6 @@
   }
 
   #addTCbtn{
-
     float: left;
-
   }
-  // //
-  // #removeTCbtn{
-  //   background-color: "none";
-  //   border: none;
-  // }
 </style>

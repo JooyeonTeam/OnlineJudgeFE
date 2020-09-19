@@ -4,17 +4,12 @@
     <Form ref="formTestcase" :model="formTestcase" :rules="ruleTestcase">
     		<div id="titleDiv">{{$t('m.AccuracyTestTitle')}}</div>
     		<p id="descripText">{{$t('m.DescriptionForAccuracyTest')}}</p>
+        <p v-html='code'></p>
 
-    		<div id="testcaseDiv" style =" width: 80%; margin: 10px auto; display: flex;">
-    			<FormItem prop="inputData" style="display: inline-block; width:30%; flex:1; margin:0px 10%;">
-    			<textarea class="testcaseForm" v-model="formTestcase.inputData" :placeholder="$t('m.Input')" @on-enter="handleRunTestcase"style = "width: 100%; height: 80px; font-size: 15px;"></textarea>
-    			</FormItem>
-
-				<img id="arrow_img" src="../../../../assets/arrow.svg" style ="height: 50px; flex:1; width=5%;" ></img>
-
-    			<FormItem prop="outputData" style="display: inline-block; width:30%; flex:1; margin:0px 10%;">
-    			<textarea class="testcaseForm" v-model="formTestcase.outputData" :placeholder="$t('m.Output')" @on-enter="handleRunTestcase" style = "width: 100%; height: 80px; font-size: 15px;"></textarea>
-    			</FormItem>
+    		<div id="testcaseDiv">
+    			<textarea class="testcaseForm" v-model="newInput" :placeholder="$t('m.Input')" @on-enter="handleRunTestcase"></textarea>
+          <img id="arrow_img" src="../../../../assets/arrow.svg"></img>
+          <textarea class="testcaseForm" v-model="newOutput" :placeholder="$t('m.Output')" @on-enter="handleRunTestcase"></textarea>
     		</div>
     	</tbody>
     	</table>
@@ -44,23 +39,20 @@
     mixins: [FormMixin],
     data () {
       return {
+        code: '',
         btnTestcaseLoading: false,
-        formTestcase: {
-          inputData: '',
-          outputData: ''
-        },
-        ruleTestcase: {
-          inputData: [
-            {required: false}
-          ],
-          outputData: [
-            {required: false}
-          ]
-        }
+        newInput: '',
+        newOutput: ''
       }
+    },
+    mounted () {
+      this.init()
     },
     methods: {
       ...mapActions(['changeModalStatus', 'getProfile']),
+      init() {
+        this.code = this.$route.params.code
+      },
       handleBtnClick (mode) {
         this.changeModalStatus({
           mode,
@@ -117,19 +109,28 @@
   }
 
   #testcaseDiv {
-  text-align: center;
-  display: inline;
+    text-align: center;
+    display: inline;
+    width: 80%;
+    margin: 10px auto;
+    display: flex;
   }
 
   .testcaseForm {
-  	width: 20%;
-  	height: 80px;
+    height: 80px;
   	border: 2px solid gray;
+    display: inline-block;
+    width:30%;
+    flex:1;
+    margin:0px 10%;
+    font-size: 15px;
   }
+
   #arrow_img {
-  	height: 55px;
-  	width: 15%;
+    height: 55px;
   	margin-bottom: 15px;
+    flex:1;
+    width: 15%;
   }
 
   .btn {

@@ -1,19 +1,31 @@
 <template>
-  	<panel :padding="15" class="container">
+  	<panel :padding="40" shadow class="container">
     <div>
-    <Form>
     <div id="titleDiv">{{$t('m.AnswerCodeTitle')}}</div>
     <p id="descripText">{{$t('m.DescriptionForAccuracyTest')}}</p>
+    <br /><br /><br />
+    <div id="problem-content" class="markdown-body" v-katex>
+      <p class="title">{{$t('m.Description')}}</p>
+      <p class="content" v-html='inputData.problemData'></p>
+      <p class="title">{{$t('m.Input')}}</p>
+      <p class="content" v-html='inputData.inputFormData'></p>
+      <p class="title">{{$t('m.Output')}}</p>
+      <p class="content" v-html='inputData.outputFormData'></p>
 
-    		<div id="codeArea">
-    		<CodeMirror :value.sync="code"
-                    :theme="theme"
-                    @resetCode="onResetToTemplate"
-                    @changeTheme="onChangeTheme"
-                    @changeLang="onChangeLang">
-                    </CodeMirror>
-                    </div>
-    </Form>
+      <p class="content" v-html='inputData.inputData'></p>
+      <p class="content" v-html='inputData.outputData'></p>
+    </div>
+
+    <div id="codeArea">
+      <Card :padding="20" id="submit-code" dis-hover>
+        <CodeMirror :value.sync="code"
+        :theme="theme"
+        @resetCode="onResetToTemplate"
+        @changeTheme="onChangeTheme"
+        @changeLang="onChangeLang">
+        </CodeMirror>
+      </Card>
+    </div>
     </div>
     <div class="footer">
       <Button
@@ -48,6 +60,13 @@
     mixins: [FormMixin],
     data () {
       return {
+        inputData: {
+          problemData: '',
+          inputFormData: '',
+          outputFormData: '',
+          inputData: '',
+          outputData: ''
+        },
         btnInputLoading: false,
         statusVisible: false,
         captchaRequired: false,
@@ -58,7 +77,7 @@
         problemID: '',
         submitting: false,
         code: '',
-        language: 'C++',
+        language: 'Java',
         theme: 'solarized',
         submissionId: '',
         submitted: false,
@@ -93,9 +112,17 @@
       }
     },
     mounted () {
+      this.init()
     },
     methods: {
       ...mapActions(['changeDomTitle', 'changeModalStatus', 'getProfile']),
+      init() {
+        this.inputData.problemData = this.$route.params.problemData
+        this.inputData.inputFormData = this.$route.params.inputFormData
+        this.inputData.outputFormData = this.$route.params.outputFormData
+        this.inputData.inputData = this.$route.params.inputData
+        this.inputData.outputData = this.$route.params.outputData
+      },
       handleBtnClick (mode) {
         this.changeModalStatus({
           mode,
@@ -103,7 +130,7 @@
         })
       },
       handleInput () {
-        this.$router.push('/accuracyTest')
+        this.$router.push({name: 'accuracyTest', params: {'code': this.codea}})
       },
       handleRoute (route) {
         this.$router.push(route)
@@ -151,6 +178,40 @@
             font-weight: 500;
           }
         }
+      }
+    }
+  }
+
+  #problem-content {
+    margin-top: -50px;
+    .title {
+      font-size: 20px;
+      font-weight: 400;
+      margin: 25px 0 8px 0;
+      color: #3091f2;
+      .copy {
+        padding-left: 8px;
+      }
+    }
+    p.content {
+      margin-left: 25px;
+      margin-right: 20px;
+      font-size: 15px
+    }
+    .sample {
+      align-items: stretch;
+      &-input, &-output {
+        width: 50%;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        margin-right: 5%;
+      }
+      pre {
+        flex: 1 1 auto;
+        align-self: stretch;
+        border-style: solid;
+        background: transparent;
       }
     }
   }

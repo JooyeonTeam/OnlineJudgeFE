@@ -298,7 +298,7 @@
   #pick-one {
     margin-top: 10px;
   }
-  
+
   #title_img {
   	margin-left: 5%;
   	height: 27px;

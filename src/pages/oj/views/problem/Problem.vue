@@ -38,6 +38,7 @@
             <pre class="content">{{problem.source}}</pre>
           </div>
         </div>
+
         <div class="footer">
           <Button
             type="primary"
@@ -136,7 +137,7 @@
         })
       },
       handleInput () {
-        this.$router.push('/answerCode')
+        this.$router.push({name: 'answerCode', params: {'problemData': this.problem.description, 'inputFormData': this.problem.input_description, 'outputFormData': this.problem.output_description, 'inputData': '', 'outputData': ''}})
       }
     },
     beforeRouteLeave (to, from, next) {
