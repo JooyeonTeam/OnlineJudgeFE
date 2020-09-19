@@ -62,3 +62,6 @@ Modern browsers and Internet Explorer 10+.
 ## LICENSE
 
 [MIT](http://opensource.org/licenses/MIT)
+
+## Information
+코딩테스트 로봇 구현에서 필요한 Online Judge를 위한 repo (open source 활용)
