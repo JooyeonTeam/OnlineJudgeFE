@@ -35,7 +35,7 @@ export const m = {
   You_have_submission_in_this_problem_sure_to_cover_it: 'You have submission in this problem, sure to cover it?',
   // inputProblem.vue
   InputProblemTitle: '문제 직접 입력',
-  InputProblem: '문제 내용을 입력해주세요. \n예시) Hello World!를 출력하는 프로그램을 작성하시오.',
+  DescriptionForProblem: '문제 내용을 입력해주세요.',
   InputFormTitle: '입력 형식',
   OutputFormTitle: '출력 형식',
   TestcaseTitle: '테스트케이스',

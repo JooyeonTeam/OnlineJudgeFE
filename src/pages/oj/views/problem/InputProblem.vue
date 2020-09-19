@@ -6,13 +6,20 @@
     		<p id="descripText">{{$t('m.DescriptionForInputProblem')}}</p>
 
     		<FormItem prop="problemData" align="center">
-    			<textarea id="problemForm" v-model="formInput.problemData" :placeholder="$t('m.InputProblem')" @on-enter="handleInput"/>
+    			<textarea id="problemForm" v-model="formInput.problemData" :placeholder="$t('m.DescriptionForProblem')" @on-enter="handleInput"></textarea>
     		</FormItem>
 
-    			<!-- <div id = "testcaseimg" style = "padding-bottom: 15px; margin: 0 auto; text-align:left; display:flex;"> -->
-    				<img id="sub_img" src="../../../../assets/testcase.svg" style = "display: inline-block;">
+        <div class="subTitleDiv">{{$t('m.InputFormTitle')}}</div>
+        <FormItem prop="inputFormData" align="center">
+          <textarea id="inputForm" v-model="formInput.inputFormData" :placeholder="$t('m.DescriptionForInputForm')" @on-enter="handleInput"></textarea>
+        </FormItem>
 
-          <!-- </div> -->
+        <div class="subTitleDiv">{{$t('m.OutputFormTitle')}}</div>
+        <FormItem prop="outputFormData" align="center">
+          <textarea id="outputForm" v-model="formInput.outputFormData" :placeholder="$t('m.DescriptionForOutputForm')" @on-enter="handleInput"></textarea>
+        </FormItem>
+
+        <div class="subTitleDiv">{{$t('m.TestcaseTitle')}}</div>
 
     		<div id="testcaseDiv" style =" width: 80%; margin: 10px auto; display: flex;">
 
@@ -218,6 +225,13 @@
   	padding-bottom: 25px;
   }
 
+  .subTitleDiv {
+    font-size: 23px;
+    font-weight: 500;
+    padding-top: 50px;
+    margin-left: 15%;
+  }
+
   #sub_img {
   	margin-top: 40px;
   	width: 40%;
@@ -236,6 +250,22 @@
    width: 65%;
    height: 300px;
    font-size: 15px;
+  }
+
+  #inputForm {
+    margin-top: 20px;
+    border: 2px solid gray;
+    width: 65%;
+    height: 70px;
+    font-size: 15px;
+  }
+
+  #outputForm {
+    margin-top: 20px;
+    border: 2px solid gray;
+    width: 65%;
+    height: 70px;
+    font-size: 15px;
   }
 
   #testcaseDiv {
