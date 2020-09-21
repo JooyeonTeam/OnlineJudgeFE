@@ -17,13 +17,13 @@
     </div>
 
     <div id="codeArea">
-      <Card :padding="20" id="submit-code" dis-hover>
+      <Card :padding="20" dis-hover>
         <CodeMirror :value.sync="code"
+        :language.sync="language"
         :theme="theme"
         @resetCode="onResetToTemplate"
         @changeTheme="onChangeTheme"
-        @changeLang="onChangeLang">
-        </CodeMirror>
+        @changeLang="onChangeLang"></CodeMirror>
       </Card>
     </div>
     </div>
@@ -68,47 +68,9 @@
           outputData: ''
         },
         btnInputLoading: false,
-        statusVisible: false,
-        captchaRequired: false,
-        graphVisible: false,
-        submissionExists: false,
-        captchaCode: '',
-        captchaSrc: '',
-        problemID: '',
-        submitting: false,
         code: '',
-        language: 'Java',
-        theme: 'solarized',
-        submissionId: '',
-        submitted: false,
-        result: {
-          result: 9
-        },
-        problem: {
-          title: '',
-          description: '',
-          hint: '',
-          my_status: '',
-          template: {},
-          languages: [],
-          created_by: {
-            username: ''
-          },
-          tags: [],
-          io_mode: {'io_mode': 'Standard IO'}
-        }
-      }
-    },
-    beforeRouteEnter (to, from, next) {
-      let problemCode = storage.get(buildProblemCodeKey(to.params.problemID))
-      if (problemCode) {
-        next(vm => {
-          vm.language = problemCode.language
-          vm.code = problemCode.code
-          vm.theme = problemCode.theme
-        })
-      } else {
-        next()
+        language: '',
+        theme: 'solarized'
       }
     },
     mounted () {
@@ -117,6 +79,8 @@
     methods: {
       ...mapActions(['changeDomTitle', 'changeModalStatus', 'getProfile']),
       init() {
+        this.language = 'Java'
+        this.code = this.$route.params.matchedCode
         this.inputData.problemData = this.$route.params.problemData
         this.inputData.inputFormData = this.$route.params.inputFormData
         this.inputData.outputFormData = this.$route.params.outputFormData
@@ -130,7 +94,7 @@
         })
       },
       handleInput () {
-        this.$router.push({name: 'accuracyTest', params: {'code': this.codea}})
+        this.$router.push({name: 'accuracyTest', params: {'code': this.code}})
       },
       handleRoute (route) {
         this.$router.push(route)
@@ -146,19 +110,6 @@
       onChangeTheme (newTheme) {
         this.theme = newTheme
       },
-      onResetToTemplate () {
-        this.$Modal.confirm({
-          content: this.$i18n.t('m.Are_you_sure_you_want_to_reset_your_code'),
-          onOk: () => {
-            let template = this.problem.template
-            if (template && template[this.language]) {
-              this.code = template[this.language]
-            } else {
-              this.code = ''
-            }
-          }
-        })
-      }
     }
   }
 </script>

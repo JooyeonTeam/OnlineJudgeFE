@@ -64,7 +64,7 @@
   import api from '@oj/api'
   import Vue from 'vue'
   import { FormMixin } from '@oj/components/mixins'
-
+  
   Vue.component('todo-item', {
     template: '\
       <div style = \"margin: 0 auto; text-align: center; \">\
@@ -99,7 +99,7 @@
         newTodoText: '',
         todos: [
         ],
-        nextTodoId: 4
+        nextTodoId: 4,
       }
     },
     methods: {
@@ -112,11 +112,8 @@
       },
       handleInput () {
         this.$router.push({name:'answerCode',
-        params:{'problemData': this.problemData,
-        'inputFormData': this.inputFormData,
-        'outputFormData': this.outputFormData,
-        'inputData': this.inputData,
-        'outputData': this.outputData}})
+        params:{'problemData': this.problemData, 'inputFormData': this.inputFormData,
+        'outputFormData': this.outputFormData, 'inputData': this.inputData, 'outputData': this.outputData}})
       },
       addTC() {
         this.$refs.addtc_img.style.display = "none";

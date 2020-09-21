@@ -5,17 +5,17 @@
       <div>
         <span>{{$t('m.Language')}}:</span>
         <Select :value="language" @on-change="onLangChange" class="adjust">
-          <Option v-for="item in languages" :key="item" :value="item">{{item}}
+          <Option v-for="item in languages" :key="item" :value="item" disabled>{{item}}
           </Option>
         </Select>
 
-        <Tooltip :content="this.$i18n.t('m.Reset_to_default_code_definition')" placement="top" style="margin-left: 10px">
+        <!--<Tooltip :content="this.$i18n.t('m.Reset_to_default_code_definition')" placement="top" style="margin-left: 10px">
           <Button icon="refresh" @click="onResetClick"></Button>
         </Tooltip>
 
         <Tooltip :content="this.$i18n.t('m.Upload_file')" placement="top" style="margin-left: 10px">
           <Button icon="upload" @click="onUploadFile"></Button>
-        </Tooltip>
+        </Tooltip> -->
 
         <input type="file" id="file-uploader" style="display: none" @change="onUploadFileDone">
 
