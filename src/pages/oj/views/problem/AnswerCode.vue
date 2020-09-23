@@ -21,7 +21,6 @@
         <CodeMirror :value.sync="code"
         :language.sync="language"
         :theme="theme"
-        @resetCode="onResetToTemplate"
         @changeTheme="onChangeTheme"
         @changeLang="onChangeLang"></CodeMirror>
       </Card>

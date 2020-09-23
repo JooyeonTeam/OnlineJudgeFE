@@ -8,8 +8,7 @@
       <Button
         type="primary"
         @click="handleFeedback"
-        class="btn" long
-        :loading="btnFeedbackLoading">
+        class="btn" long>
         {{$t('m.sendBtn')}}
       </Button>
     </div>

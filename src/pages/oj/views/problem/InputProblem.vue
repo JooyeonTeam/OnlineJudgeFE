@@ -64,7 +64,7 @@
   import api from '@oj/api'
   import Vue from 'vue'
   import { FormMixin } from '@oj/components/mixins'
-  
+
   Vue.component('todo-item', {
     template: '\
       <div style = \"margin: 0 auto; text-align: center; \">\
@@ -96,10 +96,11 @@
         outputFormData: '',
         inputData: '',
         outputData: '',
+        result: '',
         newTodoText: '',
         todos: [
         ],
-        nextTodoId: 4,
+        nextTodoId: 4
       }
     },
     methods: {
@@ -111,11 +112,34 @@
         })
       },
       handleInput () {
-        this.$router.push({name:'answerCode',
-        params:{'problemData': this.problemData, 'inputFormData': this.inputFormData,
-        'outputFormData': this.outputFormData, 'inputData': this.inputData, 'outputData': this.outputData}})
+        var request = require('request')
+        var targetText = this.problemData
+
+        var res = request.post({
+          url: 'http://aiopen.etri.re.kr:8000/WiseNLU_spoken',
+          body: JSON.stringify({
+            'access_key': '4d70a188-207c-4f1a-b370-5f27675c7d5e',
+            'argument': {
+              'text': targetText,
+              'analysis_code': 'morp'
+            }
+          }),
+          headers: {'Content-Type': 'application/json; charset=UTF-8'}
+        }, function (error, response, body) {
+          if(!error && response.statusCode == 200){
+            // 성공
+            this.result = body
+            alert('in' + this.result)
+            console.log(body)
+          }else{
+            //실패
+            console.log(error)
+          }
+        })
+        alert('out' + this.result)
+        this.$router.push({name:'answerCode', params:{'matchedCode': this.result, 'problemData': this.problemData, 'inputFormData': this.inputFormData, 'outputFormData': this.outputFormData, 'inputData': this.inputData, 'outputData': this.outputData}})
       },
-      addTC() {
+      addTC () {
         this.$refs.addtc_img.style.display = "none";
       },
       addNewTodo: function () {

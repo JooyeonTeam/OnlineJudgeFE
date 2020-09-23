@@ -79,7 +79,8 @@
           },
           tags: [],
           io_mode: {'io_mode': 'Standard IO'}
-        }
+        },
+        result: ''
       }
     },
     beforeRouteEnter (to, from, next) {
@@ -137,7 +138,30 @@
         })
       },
       handleInput () {
-        this.$router.push({name: 'answerCode', params: {'problemData': this.problem.description, 'inputFormData': this.problem.input_description, 'outputFormData': this.problem.output_description, 'inputData': '', 'outputData': ''}})
+        var request = require('request')
+        var targetText = this.problem.description
+
+        var res = request.post({
+          url: 'http://aiopen.etri.re.kr:8000/WiseNLU_spoken',
+          body: JSON.stringify({
+            'access_key': '4d70a188-207c-4f1a-b370-5f27675c7d5e',
+            'argument': {
+              'text': targetText,
+              'analysis_code': 'morp'
+            }
+          }),
+          headers: {'Content-Type': 'application/json; charset=UTF-8'}
+        }, function (error, response, body) {
+          if (!error && response.statusCode === 200) {
+            // 성공
+            this.result = body
+            console.log(body)
+          } else {
+            // 실패
+            console.log(error)
+          }
+        })
+        this.$router.push({name: 'answerCode', params: {'matchedCode': this.result, 'problemData': this.problem.description, 'inputFormData': this.problem.input_description, 'outputFormData': this.problem.output_description, 'inputData': '', 'outputData': ''}})
       }
     },
     beforeRouteLeave (to, from, next) {
