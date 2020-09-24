@@ -51,6 +51,7 @@ export const m = {
   AccuracyTestTitle: '정확도 테스트',
   DescriptionForAccuracyTest: '답안 코드에 대해 새로운 테스트 케이스를 실행해 보세요!',
   RunTestcaseBtn: '결과 확인',
+  testResult: '테스트 결과 확인',
   // Feedback.vue
   FeedbackTitle: '문의등록',
   DescriptionForFeedback: '이용 중 생긴 문의 사항을 등록해주세요.',

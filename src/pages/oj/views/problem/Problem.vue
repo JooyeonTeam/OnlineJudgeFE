@@ -58,7 +58,7 @@
   import {types} from '../../../../store'
   import storage from '@/utils/storage'
   import {FormMixin} from '@oj/components/mixins'
-  import {JUDGE_STATUS, CONTEST_STATUS, buildProblemCodeKey} from '@/utils/constants'
+  import {buildProblemCodeKey} from '@/utils/constants'
   import api from '@oj/api'
 
   export default {
@@ -138,10 +138,10 @@
         })
       },
       handleInput () {
-        var request = require('request')
-        var targetText = this.problem.description
+        const request = require('request')
+        const targetText = this.problem.description
 
-        var res = request.post({
+        request.post({
           url: 'http://aiopen.etri.re.kr:8000/WiseNLU_spoken',
           body: JSON.stringify({
             'access_key': '4d70a188-207c-4f1a-b370-5f27675c7d5e',
